@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+import "./main.less";
 
 class App extends React.Component
 {
