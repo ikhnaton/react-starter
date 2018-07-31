@@ -1,47 +1,24 @@
-const webpack = require('webpack');
-const path = require('path');
-
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-//const extractLess = new ExtractTextPlugin({
-//    filename: "[name].[contenthash].css",
-////    disable: process.env.NODE_ENV === "development"
-//});
-
-module.exports = {
-	entry: path.join(__dirname, '/src/app.jsx'),
-	output: {
-		filename: 'bundle.js',
-		path: path.join(__dirname, '/dist')
-	},
+const devConfig = {
+	devtool: 'source-map',
+	watch: true,
+	mode: 'development',
 	stats: {
 		colors: true
-	},
-	devtool: 'source-map',
-	module: {
-		loaders: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: "babel-loader"
-			},
-			{
-				test: /\.jsx$/,
-				exclude: /node_modules/,
-				loader: "babel-loader"
-			},
-			{
-				test: [/\.css$/,/\.less$/],
-				use: ExtractTextPlugin.extract({
-					fallback: "style-loader",
-					use: ["css-loader","less-loader"]
-				})
-			}
-		]
-	},
-	plugins: [
-		new ExtractTextPlugin("main.css"),
-	],
-	watch: true
+	}
+}
 
-};
+const prodConfig = require('./webpack.prod.config');
+
+const clientConfig = Object.assign({}, prodConfig[0], devConfig, {
+	plugins: [
+		prodConfig.pluginConfigs.MiniCssExtractPlugin,
+		prodConfig.pluginConfigs.CopyWebpackPlugin
+	]
+});
+const serverConfig = Object.assign({}, prodConfig[1], devConfig, {
+	plugins: [
+		prodConfig.pluginConfigs.MiniCssExtractPlugin
+	]
+});
+
+module.exports = [ clientConfig, serverConfig ]
