@@ -2,13 +2,20 @@ import { useState } from 'react';
 import axios from 'axios';
 import get from 'lodash/get';
 
-export const useApi = () =>
+export type ApiConfig = {
+	url: string,
+	params?: object,
+	data?: object
+}
+
+export const useApi: Function = () =>
 {
 	const [isLoading, setLoading] = useState(false);
 	const [message, setMessage] = useState("");
 
-	const getData = async ({ url, params }) =>
+	const getData = async (inputs: ApiConfig) =>
 	{
+		const { url, params } = inputs;
 		setLoading(true);
 		try
 		{
@@ -22,15 +29,16 @@ export const useApi = () =>
 		}
 		catch (err)
 		{
-			setMessage(get(err, "response.data.message", get(err, "response.statusText", err.toString())));
+			setMessage(get(err, "response.data.message", get(err, "response.statusText", (err as any).toString())));
 			setLoading(false);
 			return { result: null };
 		}
 
 	};
 
-	const postData = async ({ url, data }) =>
+	const postData = async (inputs: ApiConfig) =>
 	{
+		const { url, data } = inputs;
 		try
 		{
 			const result = await axios({
@@ -42,7 +50,7 @@ export const useApi = () =>
 		}
 		catch (err)
 		{
-			setMessage(get(err, "response.data.message", get(err, "response.statusText", err.toString())));
+			setMessage(get(err, "response.data.message", get(err, "response.statusText", (err as any).toString())));
 
 			return { result: null };
 		}

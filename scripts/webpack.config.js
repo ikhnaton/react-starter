@@ -24,7 +24,7 @@ const devConfig = {
 
 const BFF = process.env.BFF_HOST || "http://localhost:9999";
 
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 3000;
 
 const prodConfig = require('./webpack.prod.config');
 const [prodClientConfig, prodServerConfig] = prodConfig;
@@ -52,38 +52,38 @@ const hardSourceWebpackPlugin = new HardSourceWebpackPlugin({
 
 const clientConfig = Object.assign({}, prodClientConfig, devConfig, {
 	plugins: [prodConfig.pluginConfigs.CopyWebpackPlugin],
-	devServer: {
-		contentBase: path.join(__dirname, '../dist'),
-		watchContentBase: false,
-		compress: true,
-		historyApiFallback: true,
-		disableHostCheck: true,
-		writeToDisk: true,
-		port: port,
-		proxy: {
-			// '/login': {
-			// 	target: apiServer,
-			// 	secure: false,
-			// 	logLevel: 'debug',
-			// 	changeOrigin: true,
-			// 	proxyTimeout: 60000
-			// },
-			'/graphql': {
-				target: BFF,
-				secure: false,
-				logLevel: 'debug',
-				changeOrigin: true,
-				proxyTimeout: 60000
-			},
-			'/viewSession': {
-				target: BFF,
-				secure: false,
-				logLevel: 'debug',
-				changeOrigin: true,
-				proxyTimeout: 60000
-			}
-		}
-	}
+	// devServer: {
+	// 	contentBase: path.join(__dirname, '../dist'),
+	// 	watchContentBase: false,
+	// 	compress: true,
+	// 	historyApiFallback: true,
+	// 	disableHostCheck: true,
+	// 	writeToDisk: true,
+	// 	port: port,
+	// 	proxy: {
+	// 		// '/login': {
+	// 		// 	target: apiServer,
+	// 		// 	secure: false,
+	// 		// 	logLevel: 'debug',
+	// 		// 	changeOrigin: true,
+	// 		// 	proxyTimeout: 60000
+	// 		// },
+	// 		'/graphql': {
+	// 			target: BFF,
+	// 			secure: false,
+	// 			logLevel: 'debug',
+	// 			changeOrigin: true,
+	// 			proxyTimeout: 60000
+	// 		},
+	// 		'/viewSession': {
+	// 			target: BFF,
+	// 			secure: false,
+	// 			logLevel: 'debug',
+	// 			changeOrigin: true,
+	// 			proxyTimeout: 60000
+	// 		}
+	// 	}
+	// }
 });
 
 module.exports = [

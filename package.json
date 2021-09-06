@@ -8,11 +8,9 @@
   },
   "scripts": {
     "build": "node_modules/.bin/webpack --config scripts/webpack.prod.config.js",
-    "serverbuild": "node_modules/.bin/webpack --config scripts/webpack.serverOnly.config.js --watch",
     "start": "node dist/server.js",
     "dev": "concurrently --names \"nodemon,webpack\" -c \"blue,green\" \"npm run devClient\" \"npm run devServer\"",
     "devClient": "node_modules/.bin/webpack --config scripts/webpack.config.js",
-    "server": "concurrently --names \"nodemon,webpack\" -c \"blue,green\" \"npm run serverbuild\" \"npm run devServer\"",
     "devServer": "nodemon -w dist/server.js dist/server.js",
     "debug": "node_modules/.bin/webpack serve --config scripts/webpack.config.js",
     "devall": "node_modules/.bin/webpack serve --config scripts/webpack.config.js --host 0.0.0.0",

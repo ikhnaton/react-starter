@@ -49,7 +49,7 @@ const init = async () =>
 	// 	cert: fs.readFileSync('./dist/certs/localhost.crt')
 	// };
 
-	const server = http.createServer(app.callback()).listen(3000);
+	const server = http.createServer(app.callback()).listen(process.env.PORT || 3000);
 
 	/* for ssl */
 	// const server2 = https.createServer(options, app.callback()).listen(3000);
