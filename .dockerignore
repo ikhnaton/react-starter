@@ -1,0 +1,10 @@
+node_modules
+cache
+coverage
+dist
+docker-compose.yml
+Dockerfile
+Dockerfile.base
+Dockerfile.devops
+.dockerignore
+devops

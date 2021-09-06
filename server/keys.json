@@ -1,0 +1,15 @@
+{
+	"oauth": {
+		"authorize": "authorize url",
+		"token": "token url",
+		"userinfo": "userinfo url",
+		"introspect": "introspect url",
+		"discovery": "openid-configuration url",
+		"jwks": "jwks url",
+		"issuer": "issuer url",
+		"clientId": "client id",
+		"clientSecret": "client secret",
+		"scope": "openid",
+		"redirectUri": "https://localhost:3000/api/auth/callback"
+	}
+}
