@@ -1,13 +1,17 @@
+import { Content } from "carbon-components-react";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./app.scss";
-import { Header } from "./components/Header";
+import { AppHeader } from "./components/Header";
 
 const App = () =>
 {
 	return (
 		<>
-			<Header title="Your Header Goes Here" />
+			<AppHeader title="Your Header Goes Here" />
+			<Content>
+				Main Content belongs here
+			</Content>
 		</>
 	);
 };

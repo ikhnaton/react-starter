@@ -1,14 +1,17 @@
 import React, { FunctionComponent } from "react";
+import { Header, HeaderName } from "carbon-components-react";
 
 type HeaderProps = {
 	title: string,
 	className?: string
 }
-export const Header: FunctionComponent<HeaderProps> = ({ title, className = "title" }) =>
+export const AppHeader: FunctionComponent<HeaderProps> = ({ title, className = "title" }) =>
 {
 	return (
-		<div className={className}>
-			{title}
-		</div>
+		<Header className={className}>
+			<HeaderName href="#" prefix="">
+				{title}
+			</HeaderName>
+		</Header>
 	);
 };
