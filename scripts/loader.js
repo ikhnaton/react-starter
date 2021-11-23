@@ -1,24 +1,23 @@
 const eslint = {
-	enforce: "pre",
-	test: [
-		/\.js$/,
-		/\.jsx$/,
-		/\.ts$/,
-		/\.spec.ts$/,
-		/\.tsx$/,
-		/\.spec.tsx$/,
-		/\.graphql$/
-	],
 	exclude: [
-		/node_modules/,
-		/lib/,
-		/vcap.local.js/,
-		/source\/js\/bootstrap/
+		"node_modules"
 	],
-	loader: "eslint-loader",
-	options: {
-		"print-config": true
-	}
+	extensions: [
+		"js",
+		"jsx",
+		"ts",
+		"spec.ts",
+		"tsx",
+		"spec.tsx",
+		"graphql"
+	],
+	files: [
+		"server",
+		"src"
+	],
+	lintDirtyModulesOnly: false,
+	formatter: "stylish"
+
 };
 
 const typescript = {
