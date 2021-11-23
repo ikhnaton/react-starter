@@ -51,7 +51,7 @@ const hardSourceWebpackPlugin = new HardSourceWebpackPlugin({
 });
 
 const clientConfig = Object.assign({}, prodClientConfig, devConfig, {
-	plugins: [prodConfig.pluginConfigs.CopyWebpackPlugin],
+	plugins: [prodConfig.pluginConfigs.CopyWebpackPlugin, prodConfig.pluginConfigs.EslintPlugin],
 	// devServer: {
 	// 	contentBase: path.join(__dirname, '../dist'),
 	// 	watchContentBase: false,
