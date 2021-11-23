@@ -236,7 +236,7 @@ module.exports =
 		"no-unsafe-negation": "error",
 		"no-unused-expressions": "error",
 		"no-unused-labels": "error",
-		"no-unused-vars": "off",
+		"no-unused-vars": "warn",
 		"no-use-before-define": "off",
 		"no-useless-call": "error",
 		"no-useless-computed-key": "error",
@@ -307,7 +307,7 @@ module.exports =
 		"react/jsx-uses-vars": "error",
 		"@typescript-eslint/ban-types": "off",
 		"@typescript-eslint/no-inferrable-types": "off",
-   		'@typescript-eslint/no-use-before-define': ['error'],
+		'@typescript-eslint/no-use-before-define': ['error']
 	},
 	"overrides": [
 		{
