@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+
 const {
 	eslint,
 	typescript,
@@ -18,7 +20,8 @@ const pluginConfigs = {
 		'process.env': {
 			'NODE_ENV': JSON.stringify('production')
 		}
-	})
+	}),
+	EslintPlugin: new ESLintPlugin(eslint)
 };
 
 const baseConfig = {
@@ -36,7 +39,6 @@ const baseConfig = {
 	// },
 	module: {
 		rules: [
-			eslint,
 			typescript,
 			fileLoader,
 			sassModules,
@@ -67,6 +69,7 @@ const clientConfig = Object.assign({}, baseConfig, {
 	},
 	plugins: [
 		new webpack.LoaderOptionsPlugin({ options: {} }),
+		pluginConfigs.EslintPlugin,
 		pluginConfigs.CopyWebpackPlugin,
 		pluginConfigs.EnvironmentPlugin
 	]
